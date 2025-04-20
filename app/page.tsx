@@ -59,7 +59,7 @@ export default function Home() {
                 </div>
 
                 <div className="profile-image-container md:ml-4 relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-purple-500 dark:border-purple-400 shadow-lg transition-all duration-300 hover:border-pink-500 dark:hover:border-pink-400 group">
-                  <Image src="/profile-photo.jpg" alt="Isaac Thean" fill className="object-cover" priority />
+                  <Image src="/profile-photo.jpeg" alt="Isaac Thean" fill className="object-cover" priority />
                   <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/0 to-pink-500/0 group-hover:from-purple-500/20 group-hover:to-pink-500/20 transition-all duration-300"></div>
                 </div>
               </div>
