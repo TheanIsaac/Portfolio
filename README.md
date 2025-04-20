@@ -3,9 +3,13 @@ A personalized workout application that leverages AI to create customized fitnes
 Features
 
 Personalized Assessment: Comprehensive questionnaire to gather fitness goals, experience level, available equipment, and preferences
+
 AI-Powered Workouts: Custom workout plans generated using advanced language models based on your specific needs
+
 Adaptive Programming: Workouts automatically adjust difficulty based on your performance and feedback
+
 Progress Tracking: Log and monitor your health metrics to visualize improvements
+
 Workout Calendar: Calendar view showing completed workouts and upcoming sessions
 
 Technology Stack
