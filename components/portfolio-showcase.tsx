@@ -23,75 +23,33 @@ interface Project {
 // Sample projects data
 const projects: Project[] = [
   {
-    id: "interactive-dashboard",
-    title: "Interactive Data Dashboard",
+    id: "Kaizen",
+    title: "Kaizen: Personalized AI Workout Generator",
     description:
-      "A real-time data visualization dashboard with interactive charts and filters. Built with React, D3.js, and WebSockets for live updates.",
+      "Creates routines based on biometrics and fitness goals, adjusts difficulty as users progress and analyzes user data to optimize recommendations",
     thumbnail: "/interactive-data-dashboard.png",
-    video: "/dashboard-demo.mp4",
-    technologies: ["React", "D3.js", "WebSockets", "Tailwind CSS"],
-    link: "https://example.com/dashboard",
+    video: "/KaizenDemo.mp4",
+    technologies: ["React", "D3.js", "REST", "AWS"],
+    link: "https://isaac-thean-whoop.vercel.app/",
     github: "https://github.com/isaacthean/dashboard",
     featured: true,
     category: "web",
   },
+
   {
-    id: "particle-physics",
-    title: "Particle Physics Simulation",
+    id: "VocaPersona",
+    title: "VocaPersona: Speech-Based Personality Analysis",
     description:
-      "Advanced particle physics simulation using verlet integration and collision detection. Simulates thousands of particles with realistic physics.",
-    thumbnail: "/LHC-Collision.png",
-    video: "/physics-demo.mp4",
-    technologies: ["WebGL", "Three.js", "JavaScript", "GLSL"],
-    github: "https://github.com/isaacthean/particle-sim",
+      "VocaPersona analyzes spoken responses to determine Big Five personality traits using AI. The application leverages both linguistic content and speech tonality to provide comprehensive personality insights.",
+    thumbnail: "/interactive-data-dashboard.png",
+    video: "/dashboard-demo.mp4",
+    technologies: ["React", "PyTorch", "Machine Learning", "AWS"],
+    link: "https://example.com/dashboard",
+    github: "https://github.com/isaacthean/dashboard",
     featured: true,
     category: "web",
-  },
-  {
-    id: "ecommerce-platform",
-    title: "Modern E-commerce Platform",
-    description:
-      "A fully responsive e-commerce platform with cart functionality, payment processing, and admin dashboard.",
-    thumbnail: "/modern-ecommerce-interface.png",
-    video: "/ecommerce-demo.mp4",
-    technologies: ["Next.js", "Stripe", "MongoDB", "Tailwind CSS"],
-    link: "https://example.com/shop",
-    featured: true,
-    category: "web",
-  },
-  {
-    id: "ar-experience",
-    title: "Augmented Reality Experience",
-    description: "An AR application that overlays digital content onto the real world through your camera.",
-    thumbnail: "/ar-experience.png",
-    video: "/ar-demo.mp4",
-    technologies: ["AR.js", "Three.js", "WebXR", "JavaScript"],
-    link: "https://example.com/ar",
-    featured: false,
-    category: "mobile",
-  },
-  {
-    id: "ai-chatbot",
-    title: "AI-Powered Chatbot",
-    description: "A conversational AI chatbot that uses natural language processing to provide helpful responses.",
-    thumbnail: "/ai-chatbot.png",
-    video: "/chatbot-demo.mp4",
-    technologies: ["TensorFlow.js", "React", "Node.js", "NLP"],
-    github: "https://github.com/isaacthean/chatbot",
-    featured: false,
-    category: "web",
-  },
-  {
-    id: "portfolio-site",
-    title: "Portfolio Website",
-    description: "A performant, interactive portfolio website showcasing my projects and skills.",
-    thumbnail: "/portfolio-site.png",
-    video: "/portfolio-demo.mp4",
-    technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "Three.js"],
-    github: "https://github.com/isaacthean/portfolio",
-    featured: false,
-    category: "web",
-  },
+  
+  }
 ]
 
 export default function PortfolioShowcase() {
