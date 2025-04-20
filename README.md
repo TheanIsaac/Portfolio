@@ -2,7 +2,6 @@ AI Workout Generator
 A personalized workout application that leverages AI to create customized fitness routines based on user preferences, goals, and performance data.
 Features
 
-User Authentication: Secure login with unique user IDs
 Personalized Assessment: Comprehensive questionnaire to gather fitness goals, experience level, available equipment, and preferences
 AI-Powered Workouts: Custom workout plans generated using advanced language models based on your specific needs
 Adaptive Programming: Workouts automatically adjust difficulty based on your performance and feedback
