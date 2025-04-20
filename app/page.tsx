@@ -7,9 +7,9 @@ import ClientResumeModal from "@/components/client-resume-modal"
 
 export default function Home() {
 
-  const Mail = "thean.i@northeastern.edu"
-  const GitHub = "https://github.com/TheanIsaac"
-  const Linkedin = "https://www.linkedin.com/in/isaacthean/"
+ const email = "thean.i@northeastern.edu"
+  const github = "https://github.com/TheanIsaac"
+  const linkedin = "https://www.linkedin.com/in/isaacthean/"
   
   return (
     <div className="relative">
@@ -40,21 +40,21 @@ export default function Home() {
 
                   <div className="flex gap-4 mb-6">
                     <a
-                      href=GitHub
+                      href={github}
                       className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
                     >
                       <Github className="h-6 w-6" />
                       <span className="sr-only">GitHub</span>
                     </a>
                     <a
-                      href=Linkedin
+                      href={linkedin}
                       className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
                     >
                       <Linkedin className="h-6 w-6" />
                       <span className="sr-only">LinkedIn</span>
                     </a>
                     <a
-                      href=Mail
+                      href={email}
                       className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
                     >
                       <Mail className="h-6 w-6" />
@@ -112,7 +112,7 @@ export default function Home() {
               </p>
 
               <a
-                href=Mail
+                href={email}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 dark:from-purple-500 dark:to-pink-500 dark:hover:from-purple-600 dark:hover:to-pink-600 text-white rounded-lg transition-all duration-300 shadow-md hover:shadow-lg text-lg"
               >
                 Contact Me <Mail className="h-5 w-5" />
@@ -131,7 +131,7 @@ export default function Home() {
 
               <div className="flex gap-4">
                 <a
-                  href=GitHub
+                  href={github}
                   className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
                 >
                   <Github className="h-5 w-5" />
