@@ -23,42 +23,88 @@ interface Project {
 // Sample projects data
 const projects: Project[] = [
   {
-    id: "Kaizen",
-    title: "Kaizen: Personalized AI Workout Generator",
+    id: "interactive-dashboard",
+    title: "Interactive Data Dashboard",
     description:
-      "Creates routines based on biometrics and fitness goals, adjusts difficulty as users progress and analyzes user data to optimize recommendations",
-    thumbnail: "/KaizenThumbnail.png",
-    video: "/KaizenDemo.mp4",
-    technologies: ["React", "D3.js", "REST", "AWS"],
-    link: "https://isaac-thean-whoop.vercel.app/",
-    github: "https://github.com/isaacthean/dashboard",
-    featured: true,
-    category: "web",
-  },
-
-  {
-    id: "VocaPersona",
-    title: "VocaPersona: Speech-Based Personality Analysis",
-    description:
-      "VocaPersona analyzes spoken responses to determine Big Five personality traits using AI. The application leverages both linguistic content and speech tonality to provide comprehensive personality insights.",
+      "A real-time data visualization dashboard with interactive charts and filters. Built with React, D3.js, and WebSockets for live updates.",
     thumbnail: "/interactive-data-dashboard.png",
     video: "/dashboard-demo.mp4",
-    technologies: ["React", "PyTorch", "Machine Learning", "AWS"],
+    technologies: ["React", "D3.js", "WebSockets", "Tailwind CSS"],
     link: "https://example.com/dashboard",
     github: "https://github.com/isaacthean/dashboard",
     featured: true,
     category: "web",
-  
-  }
+  },
+  {
+    id: "particle-physics",
+    title: "Particle Physics Simulation",
+    description:
+      "Advanced particle physics simulation using verlet integration and collision detection. Simulates thousands of particles with realistic physics.",
+    thumbnail: "/LHC-Collision.png",
+    video: "/physics-demo.mp4",
+    technologies: ["WebGL", "Three.js", "JavaScript", "GLSL"],
+    github: "https://github.com/isaacthean/particle-sim",
+    featured: true,
+    category: "web",
+  },
+  {
+    id: "ecommerce-platform",
+    title: "Modern E-commerce Platform",
+    description:
+      "A fully responsive e-commerce platform with cart functionality, payment processing, and admin dashboard.",
+    thumbnail: "/modern-ecommerce-interface.png",
+    video: "/ecommerce-demo.mp4",
+    technologies: ["Next.js", "Stripe", "MongoDB", "Tailwind CSS"],
+    link: "https://example.com/shop",
+    featured: true,
+    category: "web",
+  },
+  {
+    id: "ar-experience",
+    title: "Augmented Reality Experience",
+    description: "An AR application that overlays digital content onto the real world through your camera.",
+    thumbnail: "/ar-experience.png",
+    video: "/ar-demo.mp4",
+    technologies: ["AR.js", "Three.js", "WebXR", "JavaScript"],
+    link: "https://example.com/ar",
+    featured: false,
+    category: "mobile",
+  },
+  {
+    id: "ai-chatbot",
+    title: "AI-Powered Chatbot",
+    description: "A conversational AI chatbot that uses natural language processing to provide helpful responses.",
+    thumbnail: "/ai-chatbot.png",
+    video: "/chatbot-demo.mp4",
+    technologies: ["TensorFlow.js", "React", "Node.js", "NLP"],
+    github: "https://github.com/isaacthean/chatbot",
+    featured: false,
+    category: "web",
+  },
+  {
+    id: "portfolio-site",
+    title: "Portfolio Website",
+    description: "A performant, interactive portfolio website showcasing my projects and skills.",
+    thumbnail: "/portfolio-site.png",
+    video: "/portfolio-demo.mp4",
+    technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "Three.js"],
+    github: "https://github.com/isaacthean/portfolio",
+    featured: false,
+    category: "web",
+  },
 ]
 
 export default function PortfolioShowcase() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [filter, setFilter] = useState<string>("all")
+  const [showControls, setShowControls] = useState(false)
+  const [modalShowControls, setModalShowControls] = useState(false)
+  const [controlsTimeout, setControlsTimeout] = useState<NodeJS.Timeout | null>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const descriptionRef = useRef<HTMLDivElement>(null)
+  const videoContainerRef = useRef<HTMLDivElement>(null)
 
   // Filter projects based on selected category
   const filteredProjects =
@@ -83,6 +129,8 @@ export default function PortfolioShowcase() {
   const openProject = (project: Project) => {
     setSelectedProject(project)
     setIsPlaying(false)
+    // Reset controls visibility
+    setModalShowControls(false)
   }
 
   // Close project modal
@@ -91,17 +139,64 @@ export default function PortfolioShowcase() {
     setIsPlaying(false)
   }
 
+  // Handle mouse enter/leave for controls visibility
+  const handleMouseEnter = () => {
+    setShowControls(true)
+    if (controlsTimeout) {
+      clearTimeout(controlsTimeout)
+      setControlsTimeout(null)
+    }
+  }
+
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setShowControls(false)
+    }, 1500)
+    setControlsTimeout(timeout as unknown as NodeJS.Timeout)
+  }
+
+  const handleModalMouseEnter = () => {
+    setModalShowControls(true)
+    if (controlsTimeout) {
+      clearTimeout(controlsTimeout)
+      setControlsTimeout(null)
+    }
+  }
+
+  const handleModalMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setModalShowControls(false)
+    }, 1500)
+    setControlsTimeout(timeout as unknown as NodeJS.Timeout)
+  }
+
+  const handleModalMouseMove = () => {
+    setModalShowControls(true)
+    if (controlsTimeout) {
+      clearTimeout(controlsTimeout)
+    }
+
+    const timeout = setTimeout(() => {
+      setModalShowControls(false)
+    }, 2500)
+    setControlsTimeout(timeout as unknown as NodeJS.Timeout)
+  }
+
   // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && selectedProject) {
         closeProject()
+      } else if (e.key === " " && selectedProject) {
+        // Space bar toggles play/pause
+        e.preventDefault()
+        togglePlay()
       }
     }
 
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [selectedProject])
+  }, [selectedProject, isPlaying])
 
   // Handle video events
   useEffect(() => {
@@ -122,6 +217,15 @@ export default function PortfolioShowcase() {
       video.removeEventListener("ended", handleEnded)
     }
   }, [selectedProject])
+
+  // Clean up timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (controlsTimeout) {
+        clearTimeout(controlsTimeout)
+      }
+    }
+  }, [controlsTimeout])
 
   // Intersection Observer for animations
   useEffect(() => {
@@ -216,7 +320,11 @@ export default function PortfolioShowcase() {
               className="project-card opacity-0 transition-opacity duration-500 bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
               onClick={() => openProject(project)}
             >
-              <div className="relative aspect-video cursor-pointer group">
+              <div
+                className="relative aspect-video cursor-pointer group"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
                 <Image
                   src={project.thumbnail || "/placeholder.svg"}
                   alt={project.title}
@@ -226,7 +334,12 @@ export default function PortfolioShowcase() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="bg-white dark:bg-gray-900 rounded-full p-3 transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                  <div
+                    className={cn(
+                      "bg-white dark:bg-gray-900 rounded-full p-3 transform transition-all duration-300",
+                      showControls ? "scale-100 opacity-100" : "scale-0 opacity-0",
+                    )}
+                  >
                     <Play className="h-6 w-6 text-black dark:text-white" />
                   </div>
                 </div>
@@ -278,20 +391,29 @@ export default function PortfolioShowcase() {
                   e.stopPropagation()
                   closeProject()
                 }}
-                className="absolute top-4 right-4 z-50 bg-black/70 hover:bg-black/90 text-white rounded-full p-2 transition-colors shadow-md"
+                className={cn(
+                  "absolute top-4 right-4 z-50 bg-black/70 hover:bg-black/90 text-white rounded-full p-2 transition-all shadow-md",
+                  modalShowControls ? "opacity-100" : "opacity-0",
+                )}
                 aria-label="Close"
               >
                 <X className="h-5 w-5" />
               </button>
 
               {/* Video container */}
-              <div className="relative">
+              <div
+                className="relative"
+                ref={videoContainerRef}
+                onMouseEnter={handleModalMouseEnter}
+                onMouseLeave={handleModalMouseLeave}
+                onMouseMove={handleModalMouseMove}
+              >
                 <div className="relative aspect-video">
                   <video
                     ref={videoRef}
                     src={selectedProject.video}
                     poster={selectedProject.thumbnail}
-                    className="w-full h-full object-contain bg-black"
+                    className="w-full h-full object-contain bg-black cursor-pointer"
                     controls={false}
                     playsInline
                     onClick={(e) => {
@@ -301,7 +423,12 @@ export default function PortfolioShowcase() {
                   />
 
                   {/* Play/Pause button */}
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  <div
+                    className={cn(
+                      "absolute inset-0 flex items-center justify-center transition-opacity duration-300",
+                      modalShowControls ? "opacity-100" : "opacity-0",
+                    )}
+                  >
                     <button
                       onClick={(e) => {
                         e.stopPropagation()
@@ -312,6 +439,23 @@ export default function PortfolioShowcase() {
                     >
                       {isPlaying ? <Pause className="h-6 w-6" /> : <Play className="h-6 w-6" />}
                     </button>
+                  </div>
+
+                  {/* Video progress bar */}
+                  <div
+                    className={cn(
+                      "absolute bottom-0 left-0 right-0 h-1 bg-gray-700 transition-opacity duration-300",
+                      modalShowControls ? "opacity-100" : "opacity-0",
+                    )}
+                  >
+                    <div
+                      className="h-full bg-gradient-to-r from-purple-600 to-pink-600"
+                      style={{
+                        width: videoRef.current
+                          ? `${(videoRef.current.currentTime / videoRef.current.duration) * 100}%`
+                          : "0%",
+                      }}
+                    />
                   </div>
                 </div>
               </div>

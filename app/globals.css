@@ -195,3 +195,13 @@
   transform: scaleX(1);
   transform-origin: left;
 }
+
+/* Video progress animation */
+@keyframes progressAnimation {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
