@@ -27,7 +27,7 @@ const projects: Project[] = [
     title: "Kaizen: Personalized AI Workout Generator",
     description:
       "Creates routines based on biometrics and fitness goals, adjusts difficulty as users progress and analyzes user data to optimize recommendations",
-    thumbnail: "/interactive-data-dashboard.png",
+    thumbnail: "/KaizenThumbnail.png",
     video: "/KaizenDemo.mp4",
     technologies: ["React", "D3.js", "REST", "AWS"],
     link: "https://isaac-thean-whoop.vercel.app/",
