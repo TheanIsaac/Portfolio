@@ -31,21 +31,21 @@ const projects: Project[] = [
     video: "/KaizenDemo.mov",
     technologies: ["React", "D3.js", "REST", "AWS"],
     link: "https://isaac-thean-whoop.vercel.app/",
-    github: "https://github.com/isaacthean/dashboard",
+    github: "https://github.com/TheanIsaac/Kaizen-ji",
     featured: true,
     category: "web",
   },
 
   {
     id: "VocaPersona",
-    title: "VocaPersona: Speech-Based Personality Analysis",
+    title: "VocaPersona: Speech-Based Personality Analysis (WIP)",
     description:
       "VocaPersona analyzes spoken responses to determine Big Five personality traits using AI. The application leverages both linguistic content and speech tonality to provide comprehensive personality insights.",
     thumbnail: "/interactive-data-dashboard.png",
     video: "/dashboard-demo.mp4",
     technologies: ["React", "PyTorch", "Machine Learning", "AWS"],
     link: "https://example.com/dashboard",
-    github: "https://github.com/isaacthean/dashboard",
+    github: "https://github.com/TheanIsaac",
     featured: true,
     category: "web",
   

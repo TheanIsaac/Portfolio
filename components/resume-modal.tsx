@@ -56,7 +56,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         </div>
 
         <div className="w-full h-full">
-          <iframe src="/resume.pdf" className="w-full h-full" title="Resume" />
+          <iframe src="\Thean.I_SOFTWARE_DEV_RESUME.pdf" className="w-full h-full" title="Resume" />
         </div>
       </div>
     </div>
