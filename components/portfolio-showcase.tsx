@@ -44,7 +44,7 @@ const projects: Project[] = [
     thumbnail: "/VocaPersona.png",
     video: "/VocaPersona.png",
     technologies: ["React", "PyTorch", "Machine Learning", "AWS"],
-    link: "vocapersona.vercel.app",
+    link: "https://vocapersona.vercel.app/",
     github: "https://github.com/TheanIsaac",
     featured: true,
     category: "web",
