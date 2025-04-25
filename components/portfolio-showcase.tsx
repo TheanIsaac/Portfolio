@@ -41,10 +41,10 @@ const projects: Project[] = [
     title: "VocaPersona: Speech-Based Personality Analysis (WIP)",
     description:
       "VocaPersona analyzes spoken responses to determine Big Five personality traits using AI. The application leverages both linguistic content and speech tonality to provide comprehensive personality insights.",
-    thumbnail: "/interactive-data-dashboard.png",
-    video: "/dashboard-demo.mp4",
+    thumbnail: "/VocaPersona.png",
+    video: "/VocaPersona.png",
     technologies: ["React", "PyTorch", "Machine Learning", "AWS"],
-    link: "https://example.com/dashboard",
+    link: "vocapersona.vercel.app",
     github: "https://github.com/TheanIsaac",
     featured: true,
     category: "web",
