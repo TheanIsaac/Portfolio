@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ExternalLink, Code, Play, Pause, X } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import { cn } from "@/lib/utils"
 
 // Define project type
@@ -325,6 +326,54 @@ export default function PortfolioShowcase() {
               </div>
             </motion.div>
           ))}
+          {(filter === "all" || filter === "featured") && (
+            <Link
+              href="/blog/predictive-delay-engine"
+              className="project-card group block overflow-hidden rounded-xl bg-white opacity-0 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:bg-gray-800"
+            >
+              <div className="relative aspect-video overflow-hidden border-b border-[#d8ded8] bg-[#e8eee8] dark:border-[#35433b] dark:bg-[#1b2721]">
+                <div className="absolute inset-0 opacity-60 [background-image:linear-gradient(rgba(57,92,72,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(57,92,72,0.12)_1px,transparent_1px)] [background-size:28px_28px]" />
+                <div className="absolute inset-x-0 top-[24%] h-[40%] bg-[#2b3430]" />
+                <div className="absolute inset-y-0 left-[76%] w-[16%] bg-[#2b3430]" />
+                <div className="absolute inset-x-0 top-[44%] border-t border-dashed border-white/50" />
+                <div className="absolute left-[84%] top-0 h-full border-l border-dashed border-white/40" />
+                {["17%", "33%", "49%", "65%", "81%"].map((position, index) => (
+                  <div
+                    key={position}
+                    aria-hidden="true"
+                    className="absolute top-[44%] z-10 h-5 w-9 -translate-x-1/2 -translate-y-1/2 rounded-md border-2 border-white/80 shadow-md"
+                    style={{ left: position }}
+                  >
+                    <div className={cn("absolute inset-0 rounded-sm", index === 4 ? "bg-[#d64b3b]" : "bg-[#1673d1]")} />
+                    <div className="absolute right-1 top-1/2 h-2 w-3 -translate-y-1/2 rounded-sm bg-[#dcecf2]/90" />
+                  </div>
+                ))}
+                <div className="absolute right-[5%] top-[10%] flex items-center gap-1.5 border border-[#d64b3b]/40 bg-[#f7f7f3] px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.1em] text-[#a4382d] dark:bg-[#101714] dark:text-[#f18a68]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#d64b3b]" /> Pickup / queue
+                </div>
+                <span className="absolute bottom-4 left-4 text-xs font-semibold uppercase tracking-[0.14em] text-[#52645b] dark:text-[#b7c4bc]">
+                  Technical article
+                </span>
+                <ExternalLink className="absolute bottom-4 right-4 h-4 w-4 text-[#a9482e] dark:text-[#f18a68]" />
+              </div>
+              <div className="p-6">
+                <h3 className="mb-2 text-xl font-bold transition-colors group-hover:text-[#a9482e] dark:group-hover:text-[#f18a68]">
+                  Predicting Congestion in Autonomous Vehicle Fleets
+                </h3>
+                <p className="mb-4 line-clamp-2 text-gray-600 dark:text-gray-300">
+                  A Temporal Graph Neural Network for forecasting lane-level delays and helping fleet planners get
+                  ahead of traffic.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["Graph Neural Networks", "LSTM", "Simulation"].map((technology) => (
+                    <span key={technology} className="rounded-full bg-gray-100 px-2 py-1 text-xs dark:bg-gray-700">
+                      {technology}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Link>
+          )}
         </div>
       </div>
 

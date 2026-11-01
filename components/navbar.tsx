@@ -40,6 +40,7 @@ export default function Navbar() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/#portfolio", label: "Portfolio" },
+    { href: "/blog/predictive-delay-engine", label: "Blog" },
     { href: "/#contact", label: "Contact" },
   ]
 
@@ -51,8 +52,14 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="text-xl font-bold">
-            Isaac Thean
+          <Link
+            href="/"
+            className="group inline-flex items-center gap-2.5 rounded-md border border-[#c25435]/40 bg-white/75 px-2.5 py-1.5 shadow-sm transition-colors hover:border-[#c25435] dark:bg-gray-950/75"
+          >
+            <span className="grid h-8 w-8 place-items-center border border-[#c25435] text-xs font-bold tracking-wide text-[#a9482e] dark:text-[#f18a68]">
+              IT
+            </span>
+            <span className="text-base font-semibold tracking-wide">Isaac Thean</span>
           </Link>
 
           {/* Desktop Navigation */}
