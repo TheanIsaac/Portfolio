@@ -139,6 +139,21 @@ export default function PredictiveDelayEngineArticle() {
                     className="object-cover"
                   />
                 </DemoFigure>
+                <DemoFigure
+                  number="03"
+                  title="Predicted delay appears"
+                  className="md:col-span-2"
+                  description="Observe the target lane change from green to yellow. This indicates predicted delay because a vehicle blockage is approaching the lane."
+                >
+                  <video
+                    src="/CongestionVideo1.mp4"
+                    aria-label="Traffic simulation showing a lane changing from green to yellow as a vehicle blockage approaches"
+                    className="h-full w-full object-cover"
+                    controls
+                    playsInline
+                    preload="metadata"
+                  />
+                </DemoFigure>
               </div>
               <div className="mt-8 border-y border-[#d8ded8] py-6 dark:border-[#35433b]">
                 <h3 className="mb-5 text-lg font-semibold">Predicted delay on the target lane</h3>
@@ -405,15 +420,17 @@ function DemoFigure({
   number,
   title,
   description,
+  className,
   children,
 }: {
   number: string
   title: string
   description: string
+  className?: string
   children: React.ReactNode
 }) {
   return (
-    <figure className="min-w-0 border-y border-[#d8ded8] py-4 dark:border-[#35433b]">
+    <figure className={`min-w-0 border-y border-[#d8ded8] py-4 dark:border-[#35433b] ${className ?? ""}`}>
       <div className="relative aspect-video overflow-hidden bg-[#202622]">{children}</div>
       <figcaption className="pt-4">
         <p className="text-xs font-semibold uppercase tracking-[0.13em] text-[#c25435] dark:text-[#f18a68]">
